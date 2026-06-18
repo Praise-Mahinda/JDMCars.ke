@@ -1,15 +1,16 @@
 body{
     background-image: url('JDMCarLogo.jpg');
-    background-color: #f0f0f0;
+    background-color: #b4d016ba;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
 }
 nav{
-    background-color: rgb(205, 1, 150);
+    background-color: rgb(5, 122, 217);
     overflow: hidden;
-    padding: 20px 0;
-    margin-bottom: 20px 0;
+    padding:  left 20px 0;
+    padding: right 20px 0;
+    margin-bottom: 0;
     align-items: left to right;
   }
 
