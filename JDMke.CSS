@@ -1,5 +1,5 @@
 body{
-    background-image: url('JDMCar.jpg');
+    background-image: url('JDMCarLogo.jpg');
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,6 +8,8 @@ body{
 nav{
     background-color: GREEN;
     overflow: hidden;
+    padding: 10px 0;
+    margin-bottom: 20px;
 }
 picture{
     display: block;
