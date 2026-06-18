@@ -6,11 +6,23 @@ body{
     padding: 20px;
 }
 nav{
-    background-color: GREEN;
+    background-color: rgb(205, 1, 150);
     overflow: hidden;
-    padding: 10px 0;
-    margin-bottom: 20px;
-}
+    padding: 20px 0;
+    margin-bottom: 20px 0;
+    align-items: left to right;
+  }
+
+    .button{
+        background-color: rgb(205, 1, 150);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
 picture{
     display: block;
     margin: 0 auto;
