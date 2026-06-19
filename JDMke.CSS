@@ -34,6 +34,10 @@ picture{
     height: auto;
 }
 
-section{
-    margin: 20px 0;
+page-title{
+    text-align: center;
+    color: rgb(31, 8, 8);
+    font-size: 36px;
+    margin-bottom: 20px;
+    align-items: right to left;
 }
