@@ -1,18 +1,26 @@
-<!DOCTYPE html>
+<!DOCTYPE html> html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WELCOME TO <JDMCARS class="Ke"></JDMCARS></title>
+    <title>WELCOME TO JDM CARS KE</title>
     <link rel="stylesheet" href="JDMke.CSS">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
         body {
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
             background-image: url('JDMCarLogo.png');
             background-size: cover;
             background-position: center;
         }
-        </style>
-
+ 
         .img-background {
             position: fixed;
             top: 0;
@@ -21,33 +29,98 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.5; /* Adjust the opacity as needed */
+            opacity: 0.5;
         }
+ 
+        /* Sidebar nav on the left */
+        nav {
+            width: 180px;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+ 
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+ 
+        nav ul li {
+            display: none; /* hide <li> wrappers, using buttons only */
+        }
+ 
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px 14px;
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+ 
+        .btn:hover {
+            background-color: #e74c3c;
+        }
+ 
+        /* Main content to the right of the nav */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+ 
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+ 
+        p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            line-height: 1.7;
+            background-color: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+ 
+    <img src="JDMCarLogo.png" class="img-background" alt="JDM Cars">
+ 
     <nav>
         <ul>
             <li><a href="index.html" class="btn">Home</a></li>
-            <button class="btn" onclick="window.location.href='index.html'">Home</button>
             <li><a href="SUBARU.html" class="btn">Subaru</a></li>
-            <button class="btn" onclick="window.location.href='SUBARU.html'">Subaru</button>
             <li><a href="TOYOTA.html" class="btn">Toyota</a></li>
-            <button class="btn" onclick="window.location.href='TOYOTA.html'">Toyota</button>
             <li><a href="NISSAN.html" class="btn">Nissan</a></li>
-            <button class="btn" onclick="window.location.href='NISSAN.html'">Nissan</button>
             <li><a href="HONDA.html" class="btn">Honda</a></li>
-            <button class="btn" onclick="window.location.href='HONDA.html'">Honda</button>
             <li><a href="MAZDA.html" class="btn">Mazda</a></li>
-            <button class="btn" onclick="window.location.href='MAZDA.html'">Mazda</button>
             <li><a href="MITSUBISHI.html" class="btn">Mitsubishi</a></li>
-            <button class="btn" onclick="window.location.href='MITSUBISHI.html'">Mitsubishi</button>
-
         </ul>
     </nav>
-    <img src="J.jpg" class = "img-background" alt="JDM Cars" class="center">
-      
-</head>
-<body>
-    <h1><JDMCars class="ke">JDM Cars</JDMCars></h1>
-    <p>Welcome to the world of JDM cars now available in Kenya. Here you can find the best selection of Japanese Domestic Market vehicles at affordable prices and after service parts. This has been made possible through our extensive network of suppliers, dealers and also YOU.</p>
-    
+ 
+    <div class="main-content">
+        <h1>JDM Cars KE</h1>
+        <p>Welcome to the world of JDM cars now available in Kenya. Here you can find the best selection of Japanese Domestic Market vehicles at affordable prices and after service parts. This has been made possible through our extensive network of suppliers, dealers and also YOU.</p>
+    </div>
+ 
 </body>
 </html>

@@ -1,6 +1,7 @@
 body{
-    background-image: url('J.jpg');
-    background-color: #03d0f4ba;
+    background-image: url('JDMCarLogo.png');
+    background-size: cover;
+    background-position: center;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
@@ -40,4 +41,10 @@ page-title{
     font-size: 36px;
     margin-bottom: 20px;
     align-items: right to left;
+}
+background-image{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
 }
