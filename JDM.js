@@ -4,7 +4,7 @@ function applyTheme(theme) {
     document.body.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     if (toggleBtn) {
-        toggleBtn.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        toggleBtn.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
     }
 }
  
