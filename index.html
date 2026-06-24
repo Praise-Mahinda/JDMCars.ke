@@ -3,124 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WELCOME TO JDM CARS KE</title>
+    <title>JDM Cars KE – Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="JDMke.CSS">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /*  Theme variables  */
+        [data-theme="dark"] {
+            --bg: #111;
+            --surface: #1e1e1e;
+            --surface2: #161616;
+            --text: #f0f0f0;
+            --muted: #aaa;
+            --border: #2e2e2e;
+        }
+        [data-theme="light"] {
+            --bg: #f5f5f5;
+            --surface: #ffffff;
+            --surface2: #ececec;
+            --text: #111;
+            --muted: #555;
+            --border: #ddd;
         }
  
         body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: Arial, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+ 
+        /*  Navbar  */
+        .navbar { background-color: #1a1a1a; border-bottom: 3px solid #c0392b; }
+        .navbar-brand { color: #c0392b !important; font-weight: 900; font-size: 1.4rem; letter-spacing: 1px; }
+        .nav-link { color: #f0f0f0 !important; font-weight: 600; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: #c0392b !important; }
+        #theme-toggle { background: none; border: 1px solid #c0392b; color: #c0392b; border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+        #theme-toggle:hover { background-color: #c0392b; color: #fff; }
+ 
+        /*  Hero  */
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(135deg, #0d0d0d 50%, #7b1a0e 100%);
             display: flex;
-            flex-direction: row;
-            min-height: 100vh;
-            background-image: url('JDMCarLogo.png');
-            background-size: cover;
-            background-position: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
- 
-        .img-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            opacity: 0.5;
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('JDMCarLogo.png') center/cover no-repeat;
+            opacity: 0.08;
         }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; }
+        .hero h1 span { color: #c0392b; }
+        .hero p { font-size: 1.2rem; color: #ccc; max-width: 580px; }
+        .btn-red { background-color: #c0392b; color: #fff; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.2s; }
+        .btn-red:hover { background-color: #e74c3c; color: #fff; }
+        .btn-outline-red { background: none; border: 2px solid #c0392b; color: #c0392b; padding: 11px 28px; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.2s; }
+        .btn-outline-red:hover { background-color: #c0392b; color: #fff; }
  
-        /* Sidebar nav on the left */
-        nav {
-            width: 180px;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            flex-shrink: 0;
-        }
+        /*  Stats bar  */
+        .stats-bar { background-color: #c0392b; padding: 20px 0; }
+        .stat-item { text-align: center; }
+        .stat-item .num { font-size: 1.8rem; font-weight: 900; color: #fff; }
+        .stat-item .lbl { font-size: 0.8rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px; }
  
-        nav ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        /*  Section titles  */
+        .section-title { font-size: 1.8rem; font-weight: 800; border-left: 5px solid #c0392b; padding-left: 14px; margin-bottom: 8px; }
+        .section-sub { color: var(--muted); margin-bottom: 32px; }
  
-        nav ul li {
-            display: none; /* hide <li> wrappers, using buttons only */
-        }
- 
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            background-color: #c0392b;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
+        /*  Brand cards  */
+        .brand-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 20px;
             text-align: center;
             text-decoration: none;
-            transition: background-color 0.2s;
+            color: var(--text);
+            display: block;
+            transition: border-color 0.3s, transform 0.2s;
+            height: 100%;
         }
+        .brand-card:hover { border-color: #c0392b; transform: translateY(-5px); color: var(--text); }
+        .brand-icon { font-size: 3rem; margin-bottom: 12px; }
+        .brand-card h5 { font-weight: 800; margin-bottom: 6px; }
+        .brand-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+        .brand-arrow { color: #c0392b; font-size: 1.2rem; margin-top: 12px; display: block; }
  
-        .btn:hover {
-            background-color: #e74c3c;
-        }
+        /*  Why JDM  */
+        .why-section { background-color: var(--surface2); padding: 80px 0; }
+        .why-card { background-color: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 26px; height: 100%; }
+        .why-card .icon { font-size: 2.2rem; margin-bottom: 12px; }
+        .why-card h6 { font-weight: 700; color: #e74c3c; margin-bottom: 8px; }
+        .why-card p { font-size: 0.9rem; color: var(--muted); margin: 0; }
  
-        /* Main content to the right of the nav */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 40px;
-            color: white;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-        }
+        /*  Featured cars  */
+        .featured-card { background-color: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.3s, transform 0.2s; }
+        .featured-card:hover { border-color: #c0392b; transform: translateY(-4px); }
+        .featured-body { padding: 20px; }
+        .featured-badge { background-color: #c0392b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 8px; }
+        .featured-body h6 { font-weight: 800; font-size: 1rem; margin-bottom: 4px; }
+        .featured-body .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; }
+        .featured-body .price { font-size: 1.05rem; font-weight: 700; color: #e74c3c; }
+        .featured-img { width: 100%; height: 160px; background: linear-gradient(135deg, #1e1e1e, #2e2e2e); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
  
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+        /*  CTA  */
+        .cta-section { background: linear-gradient(135deg, #1a1a1a, #7b1a0e); padding: 80px 0; text-align: center; }
+        .cta-section h2 { font-size: 2.2rem; font-weight: 900; }
+        .cta-section p { color: #ccc; max-width: 500px; margin: 0 auto 28px; }
  
-        p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            line-height: 1.7;
-            background-color: rgba(0,0,0,0.5);
-            padding: 20px;
-            border-radius: 8px;
-        }
+        /*  Footer  */
+        footer { background-color: #1a1a1a; border-top: 3px solid #c0392b; padding: 40px 0 20px; color: #888; }
+        footer .footer-brand { color: #c0392b; font-size: 1.3rem; font-weight: 900; }
+        footer a { color: #aaa; text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: #c0392b; }
+        footer .footer-links { list-style: none; padding: 0; }
+        footer .footer-links li { margin-bottom: 6px; }
+        .footer-divider { border-color: #2e2e2e; margin: 24px 0 16px; }
     </style>
 </head>
 <body>
  
-    <img src="JDMCarLogo.png" class="img-background" alt="JDM Cars">
- 
-    <nav>
-        <ul>
-            <li><a href="index.html" class="btn">Home</a></li>
-            <li><a href="SUBARU.html" class="btn">Subaru</a></li>
-            <li><a href="TOYOTA.html" class="btn">Toyota</a></li>
-            <li><a href="NISSAN.html" class="btn">Nissan</a></li>
-            <li><a href="HONDA.html" class="btn">Honda</a></li>
-            <li><a href="MAZDA.html" class="btn">Mazda</a></li>
-            <li><a href="MITSUBISHI.html" class="btn">Mitsubishi</a></li>
-        </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">JDM Cars KE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="SUBARU.html">Subaru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="TOYOTA.html">Toyota</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NISSAN.html">Nissan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="HONDA.html">Honda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MAZDA.html">Mazda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MITSUBISHI.html">Mitsubishi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="ms-3"> Light Mode</button>
+            </div>
+        </div>
     </nav>
  
-    <div class="main-content">
-        <h1>JDM Cars KE</h1>
-        <p>Welcome to the world of JDM cars now available in Kenya. Here you can find the best selection of Japanese Domestic Market vehicles at affordable prices and after service parts. This has been made possible through our extensive network of suppliers, dealers and also YOU.</p>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="text-uppercase fw-bold mb-2" style="color:#c0392b; letter-spacing:3px; font-size:0.85rem;">Kenya's #1 JDM Importer</p>
+                    <h1>Drive the <span>Legend</span> of Japanese Engineering</h1>
+                    <p class="mt-3 mb-4">From Subaru WRXs to Nissan GT-Rs — we bring the finest Japanese Domestic Market vehicles directly to Kenya at honest prices, with full inspection and after-sale support.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="NISSAN.html" class="btn-red">Browse Cars</a>
+                        <a href="AboutUs.html" class="btn-outline-red">Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <div class="num">500+</div>
+                        <div class="lbl">Vehicles Imported</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <div class="num">6</div>
+                        <div class="lbl">JDM Brands</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <div class="num">350+</div>
+                        <div class="lbl">Happy Customers</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <div class="num">5 yrs</div>
+                        <div class="lbl">In Business</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
  
+    <!-- Browse by Brand -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Browse by Brand</h2>
+            <p class="section-sub">Select a brand to explore available models, specs, and pricing.</p>
+            <div class="row g-4">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="SUBARU.html" class="brand-card">
+                        <div class="brand-icon"></div>
+                        <h5>Subaru</h5>
+                        <p>AWD performance & rally heritage</p>
+                        <span class="brand-arrow">→</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="TOYOTA.html" class="brand-card">
+                        <div class="brand-icon"></div>
+                        <h5>Toyota</h5>
+                        <p>Legendary reliability & performance</p>
+                        <span class="brand-arrow">→</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="NISSAN.html" class="brand-card">
+                        <div class="brand-icon"></div>
+                        <h5>Nissan</h5>
+                        <p>GT-R, Silvia & Skyline icons</p>
+                        <span class="brand-arrow">→</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="HONDA.html" class="brand-card">
+                        <div class="brand-icon"></div>
+                        <h5>Honda</h5>
+                        <p>VTEC precision engineering</p>
+                        <span class="brand-arrow">→</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="MAZDA.html" class="brand-card">
+                        <div class="brand-icon"></div>
+                        <h5>Mazda</h5>
+                        <p>Rotary soul & Jinba Ittai feel</p>
+                        <span class="brand-arrow">→</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="MITSUBISHI.html" class="brand-card">
+                        <div class="brand-icon"></div>
+                        <h5>Mitsubishi</h5>
+                        <p>Evo rally DNA & tough 4WD</p>
+                        <span class="brand-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Featured Cars -->
+    <section class="py-5" style="background-color: var(--surface2);">
+        <div class="container">
+            <h2 class="section-title">Featured Imports</h2>
+            <p class="section-sub">Hand-picked JDM classics and modern legends currently available.</p>
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="featured-card">
+                        <div class="featured-img"></div>
+                        <div class="featured-body">
+                            <span class="featured-badge">Nissan</span>
+                            <h6>Skyline GT-R R34</h6>
+                            <div class="meta">1999 · Coupe · Twin Turbo AWD</div>
+                            <div class="price">KSh 5,500,000</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="featured-card">
+                        <div class="featured-img"></div>
+                        <div class="featured-body">
+                            <span class="featured-badge">Toyota</span>
+                            <h6>Supra RZ 2JZ</h6>
+                            <div class="meta">1997 · Coupe · Twin Turbo RWD</div>
+                            <div class="price">KSh 3,200,000</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="featured-card">
+                        <div class="featured-img"></div>
+                        <div class="featured-body">
+                            <span class="featured-badge">Subaru</span>
+                            <h6>Impreza WRX STI</h6>
+                            <div class="meta">1999 · Sedan · Turbo AWD</div>
+                            <div class="price">KSh 1,200,000</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="featured-card">
+                        <div class="featured-img"></div>
+                        <div class="featured-body">
+                            <span class="featured-badge">Honda</span>
+                            <h6>NSX Type R</h6>
+                            <div class="meta">1992 · Coupe · NA V6 Mid-Engine</div>
+                            <div class="price">KSh 8,500,000</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="featured-card">
+                        <div class="featured-img"></div>
+                        <div class="featured-body">
+                            <span class="featured-badge">Mazda</span>
+                            <h6>RX-7 FD3S</h6>
+                            <div class="meta">1993 · Coupe · Twin Turbo Rotary</div>
+                            <div class="price">KSh 2,800,000</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="featured-card">
+                        <div class="featured-img"></div>
+                        <div class="featured-body">
+                            <span class="featured-badge">Mitsubishi</span>
+                            <h6>Lancer Evolution VI TME</h6>
+                            <div class="meta">1999 · Sedan · Turbo AWD</div>
+                            <div class="price">KSh 2,500,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Why JDM -->
+    <section class="why-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose JDM?</h2>
+            <p class="section-sub">Japanese Domestic Market cars are built to a different standard.</p>
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="icon"></div>
+                        <h6>Superior Build Quality</h6>
+                        <p>JDM vehicles meet Japan's strict domestic safety and quality standards — often higher than export models.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="icon"></div>
+                        <h6>Full Service History</h6>
+                        <p>Japanese car culture prioritizes maintenance. Most imports come with detailed, verified service records.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="icon"></div>
+                        <h6>Honest Pricing</h6>
+                        <p>We source directly from Japanese auction houses, cutting out middlemen and passing the savings to you.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="icon"></div>
+                        <h6>After-Sale Support</h6>
+                        <p>Our network of local mechanics and parts suppliers means you're never left stranded after purchase.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="text-white">Ready to Find Your JDM?</h2>
+            <p>Browse our full collection or get in touch — we'll help you find the perfect car for your budget and lifestyle.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="TOYOTA.html" class="btn-red">Browse All Cars</a>
+                <a href="AboutUs.html" class="btn-outline-red" style="color:#fff; border-color:#fff;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="footer-brand mb-2">JDM Cars KE</div>
+                    <p style="font-size:0.9rem;">Kenya's trusted source for Japanese Domestic Market vehicles. Quality imports, honest pricing, full support.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Browse Brands</h6>
+                    <ul class="footer-links">
+                        <li><a href="SUBARU.html">Subaru</a></li>
+                        <li><a href="TOYOTA.html">Toyota</a></li>
+                        <li><a href="NISSAN.html">Nissan</a></li>
+                        <li><a href="HONDA.html">Honda</a></li>
+                        <li><a href="MAZDA.html">Mazda</a></li>
+                        <li><a href="MITSUBISHI.html">Mitsubishi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Company</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="AboutUs.html">About Us</a></li>
+                        <li><a href="mailto:info@jdmcars.ke">info@jdmcars.ke</a></li>
+                        <li>Nairobi, Kenya</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <p class="text-center mb-0" style="font-size:0.85rem;">© 2026 JDM Cars KE. All rights reserved.</p>
+        </div>
+    </footer>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JDM.js"></script>
 </body>
 </html>
