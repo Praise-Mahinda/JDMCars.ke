@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="JDMke.CSS">
     <style>
-        /* ── Theme variables ── */
+        /*  Theme variables  */
         [data-theme="dark"] {
             --bg: #111;
             --surface: #1e1e1e;
@@ -25,14 +25,9 @@
             --border: #ddd;
         }
  
-        body { 
-            background-image: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-color: var(--bg); 
-            color: var(--text); 
-            font-family: Arial, sans-serif; 
-            transition: background 0.3s, color 0.3s; }
+        body { background-color: var(--bg); color: var(--text); font-family: Arial, sans-serif; transition: background 0.3s, color 0.3s; }
  
-        /* ── Navbar ── */
+        /*  Navbar  */
         .navbar { background-color: #1a1a1a; border-bottom: 3px solid #c0392b; }
         .navbar-brand { color: #c0392b !important; font-weight: 900; letter-spacing: 1px; }
         .nav-link { color: #f0f0f0 !important; font-weight: 600; transition: color 0.2s; }
@@ -40,18 +35,18 @@
         #theme-toggle { background: none; border: 1px solid #c0392b; color: #c0392b; border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
         #theme-toggle:hover { background-color: #c0392b; color: #fff; }
  
-        /* ── Hero ── */
+        /*  Hero  */
         .hero { background: linear-gradient(135deg, #1a1a1a 60%, #c0392b 100%); padding: 60px 0 40px; }
         .hero h1 { font-size: 2.8rem; font-weight: 900; }
         .hero h1 span { color: #c0392b; }
         .hero p { color: #ccc; max-width: 600px; }
  
-        /* ── Search ── */
+        /*  Search  */
         .search-wrap { background-color: var(--surface2); padding: 24px 0; }
         #car-search { background-color: var(--surface); color: var(--text); border: 1px solid #c0392b; border-radius: 8px; padding: 10px 16px; width: 100%; max-width: 420px; font-size: 1rem; outline: none; }
         #car-search::placeholder { color: var(--muted); }
  
-        /* ── Car cards ── */
+        /*  Car cards  */
         .car-card-inner { background-color: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px; height: 100%; transition: border-color 0.3s, transform 0.2s; }
         .car-card-inner:hover { border-color: #c0392b; transform: translateY(-4px); }
         .car-badge { display: inline-block; background-color: #c0392b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase; }
@@ -61,16 +56,15 @@
         .car-price { font-size: 1.1rem; font-weight: 700; color: #e74c3c; margin-top: 12px; }
         #no-results { display: none; color: var(--muted); text-align: center; padding: 40px 0; font-size: 1.1rem; }
  
-        /* ── Section title ── */
+        /*  Section title  */
         .section-title { font-size: 1.6rem; font-weight: 800; border-left: 5px solid #c0392b; padding-left: 14px; margin-bottom: 24px; }
  
-        /* ── Footer ── */
+        /*  Footer  */
         footer { background-color: #1a1a1a; border-top: 3px solid #c0392b; padding: 30px 0; text-align: center; color: #888; margin-top: 60px; }
         footer a { color: #c0392b; text-decoration: none; }
     </style>
 </head>
 <body>
-
  
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
@@ -80,17 +74,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto gap-2">
+                                <ul class="navbar-nav ms-auto gap-2">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="SUBARU.html">Subaru</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="SUBARU.html">Subaru</a></li>
                     <li class="nav-item"><a class="nav-link" href="TOYOTA.html">Toyota</a></li>
                     <li class="nav-item"><a class="nav-link" href="NISSAN.html">Nissan</a></li>
                     <li class="nav-item"><a class="nav-link" href="HONDA.html">Honda</a></li>
                     <li class="nav-item"><a class="nav-link" href="MAZDA.html">Mazda</a></li>
                     <li class="nav-item"><a class="nav-link" href="MITSUBISHI.html">Mitsubishi</a></li>
                     <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
                 </ul>
-                <button id="theme-toggle" class="ms-3">☀️ Light Mode</button>
+                <button id="theme-toggle" class="ms-3"> Light Mode</button>
             </div>
         </div>
     </nav>
@@ -106,7 +101,7 @@
     <!-- Search -->
     <div class="search-wrap">
         <div class="container">
-            <input type="text" id="car-search" placeholder="🔍 Search by model, year, or type…">
+            <input type="text" id="car-search" placeholder=" Search by model, year, or type…">
         </div>
     </div>
  
