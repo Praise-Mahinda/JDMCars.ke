@@ -3,106 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nissan Cars</title>
+    <title>Nissan Cars – JDM Cars KE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="JDMke.CSS">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /*  Theme variables  */
+        [data-theme="dark"] {
+            --bg: #111;
+            --surface: #1e1e1e;
+            --surface2: #161616;
+            --text: #f0f0f0;
+            --muted: #aaa;
+            --border: #2e2e2e;
+        }
+        [data-theme="light"] {
+            --bg: #f5f5f5;
+            --surface: #ffffff;
+            --surface2: #ececec;
+            --text: #111;
+            --muted: #555;
+            --border: #ddd;
         }
  
-        body {
-            display: flex;
-            flex-direction: row;
-            min-height: 100vh;
-            background-image: url("JDMCarLogo.png");
-            background-size: cover;
-            background-position: center;
-        }
+        body { background-color: var(--bg); color: var(--text); font-family: Arial, sans-serif; transition: background 0.3s, color 0.3s; }
  
-        nav {
-            width: 180px;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            flex-shrink: 0;
-        }
+        /*  Navbar  */
+        .navbar { background-color: #1a1a1a; border-bottom: 3px solid #c0392b; }
+        .navbar-brand { color: #c0392b !important; font-weight: 900; letter-spacing: 1px; }
+        .nav-link { color: #f0f0f0 !important; font-weight: 600; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: #c0392b !important; }
+        #theme-toggle { background: none; border: 1px solid #c0392b; color: #c0392b; border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+        #theme-toggle:hover { background-color: #c0392b; color: #fff; }
  
-        nav ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        /*  Hero  */
+        .hero { background: linear-gradient(135deg, #1a1a1a 60%, #c0392b 100%); padding: 60px 0 40px; }
+        .hero h1 { font-size: 2.8rem; font-weight: 900; }
+        .hero h1 span { color: #c0392b; }
+        .hero p { color: #ccc; max-width: 600px; }
  
-        nav ul li a {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            background-color: #c0392b;
-            color: white;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.2s;
-        }
+        /*  Search  */
+        .search-wrap { background-color: var(--surface2); padding: 24px 0; }
+        #car-search { background-color: var(--surface); color: var(--text); border: 1px solid #c0392b; border-radius: 8px; padding: 10px 16px; width: 100%; max-width: 420px; font-size: 1rem; outline: none; }
+        #car-search::placeholder { color: var(--muted); }
  
-        nav ul li a:hover {
-            background-color: #e74c3c;
-        }
+        /*  Car cards  */
+        .car-card-inner { background-color: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px; height: 100%; transition: border-color 0.3s, transform 0.2s; }
+        .car-card-inner:hover { border-color: #c0392b; transform: translateY(-4px); }
+        .car-badge { display: inline-block; background-color: #c0392b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase; }
+        .car-name { font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; }
+        .car-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
+        .car-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+        .car-price { font-size: 1.1rem; font-weight: 700; color: #e74c3c; margin-top: 12px; }
+        #no-results { display: none; color: var(--muted); text-align: center; padding: 40px 0; font-size: 1.1rem; }
  
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 40px;
-            color: white;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-        }
+        /*  Section title  */
+        .section-title { font-size: 1.6rem; font-weight: 800; border-left: 5px solid #c0392b; padding-left: 14px; margin-bottom: 24px; }
  
-        h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-
-        }
- 
-        p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            line-height: 1.7;
-            background-color: rgba(0,0,0,0.5);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-        }
+        /*  Footer  */
+        footer { background-color: #1a1a1a; border-top: 3px solid #c0392b; padding: 30px 0; text-align: center; color: #888; margin-top: 60px; }
+        footer a { color: #c0392b; text-decoration: none; }
     </style>
 </head>
 <body>
  
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="SUBARU.html">Subaru</a></li>
-            <li><a href="TOYOTA.html">Toyota</a></li>
-            <li><a href="NISSAN.html">Nissan</a></li>
-            <li><a href="HONDA.html">Honda</a></li>
-            <li><a href="MAZDA.html">Mazda</a></li>
-            <li><a href="MITSUBISHI.html">Mitsubishi</a></li>
-        </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">JDM Cars KE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="SUBARU.html">Subaru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="TOYOTA.html">Toyota</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="NISSAN.html">Nissan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="HONDA.html">Honda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MAZDA.html">Mazda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MITSUBISHI.html">Mitsubishi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="ms-3"> Light Mode</button>
+            </div>
+        </div>
     </nav>
  
-    <div class="main-content">
-        <h1>Nissan Cars</h1>
-        <p>Welcome to the Nissan section of our JDM car collection. Here you can find a variety of Nissan models, known for their performance, reliability, and unique engineering. Explore our selection and discover the perfect Nissan for your needs.</p>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1><span>Nissan</span> Cars</h1>
+            <p class="mt-2">From the GT-R to the Silvia, Nissan's JDM lineup is the heart of Japanese performance culture. Find your Nissan here.</p>
+        </div>
+    </section>
+ 
+    <!-- Search -->
+    <div class="search-wrap">
+        <div class="container">
+            <input type="text" id="car-search" placeholder=" Search by model, year, or type…">
+        </div>
     </div>
  
+    <!-- Cars Grid -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Available Models</h2>
+            <div class="row g-4" id="cars-grid">
+ 
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Nissan Skyline GT-R R34" data-year="1999" data-type="Coupe">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Coupe</div>
+                        <h5 class="car-name">Nissan Skyline GT-R R34</h5>
+                        <div class="car-meta">1999 &nbsp;·&nbsp; Coupe</div>
+                        <p class="car-desc">The legendary Godzilla. RB26DETT twin-turbo, ATTESA AWD, and Nismo-tuned handling.</p>
+                        <div class="car-price">KSh 5,500,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Nissan Silvia S15" data-year="2000" data-type="Coupe">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Coupe</div>
+                        <h5 class="car-name">Nissan Silvia S15</h5>
+                        <div class="car-meta">2000 &nbsp;·&nbsp; Coupe</div>
+                        <p class="car-desc">The final and most refined Silvia. SR20DET turbo with perfectly balanced rear-wheel-drive dynamics.</p>
+                        <div class="car-price">KSh 2,100,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Nissan Stagea 260RS" data-year="1998" data-type="Wagon">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Wagon</div>
+                        <h5 class="car-name">Nissan Stagea 260RS</h5>
+                        <div class="car-meta">1998 &nbsp;·&nbsp; Wagon</div>
+                        <p class="car-desc">An Autech-tuned wagon with the GT-R's RB26DETT engine. The ultimate sleeper wagon.</p>
+                        <div class="car-price">KSh 1,400,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Nissan Gloria Gran Turismo" data-year="2001" data-type="Sedan">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Sedan</div>
+                        <h5 class="car-name">Nissan Gloria Gran Turismo</h5>
+                        <div class="car-meta">2001 &nbsp;·&nbsp; Sedan</div>
+                        <p class="car-desc">A luxury V6 executive sedan with smooth ride quality and premium interior.</p>
+                        <div class="car-price">KSh 850,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Nissan Note e-Power" data-year="2017" data-type="Hatchback">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Hatchback</div>
+                        <h5 class="car-name">Nissan Note e-Power</h5>
+                        <div class="car-meta">2017 &nbsp;·&nbsp; Hatchback</div>
+                        <p class="car-desc">A revolutionary series-hybrid hatchback — electric driving experience without charging anxiety.</p>
+                        <div class="car-price">KSh 1,750,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Nissan X-Trail 20X" data-year="2008" data-type="SUV">
+                    <div class="car-card-inner">
+                        <div class="car-badge">SUV</div>
+                        <h5 class="car-name">Nissan X-Trail 20X</h5>
+                        <div class="car-meta">2008 &nbsp;·&nbsp; SUV</div>
+                        <p class="car-desc">A capable AWD SUV with 2.0L engine, panoramic roof, and intelligent 4WD system.</p>
+                        <div class="car-price">KSh 1,100,000</div>
+                    </div>
+                </div>
+            </div>
+            <div id="no-results">No models match your search. Try a different keyword.</div>
+        </div>
+    </section>
+ 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-1">© 2026 JDM Cars KE. All rights reserved.</p>
+            <p class="mb-0">Questions? <a href="mailto:info@jdmcars.ke">info@jdmcars.ke</a></p>
+        </div>
+    </footer>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JDM.js"></script>
 </body>
 </html>
