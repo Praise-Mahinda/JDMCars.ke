@@ -3,18 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOYOTA</title>
+    <title>Honda Cars – JDM Cars KE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="JDMke.CSS">
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="SUBARU.html">Subaru</a></li>
-            <li><a href="TOYOTA.html">Toyota</a></li>
-            <li><a href="NISSAN.html">Nissan</a></li>
-            <li><a href="HONDA.html">Honda</a></li>
-            <li><a href="MAZDA.html">Mazda</a></li>
-            <li><a href="MITSUBISHI.html">Mitsubishi</a></li>
-
-        </ul>
+    <style>
+        /*  Theme variables  */
+        [data-theme="dark"] {
+            --bg: #111;
+            --surface: #1e1e1e;
+            --surface2: #161616;
+            --text: #f0f0f0;
+            --muted: #aaa;
+            --border: #2e2e2e;
+        }
+        [data-theme="light"] {
+            --bg: #f5f5f5;
+            --surface: #ffffff;
+            --surface2: #ececec;
+            --text: #111;
+            --muted: #555;
+            --border: #ddd;
+        }
+ 
+        body { background-color: var(--bg); color: var(--text); font-family: Arial, sans-serif; transition: background 0.3s, color 0.3s; }
+ 
+        /*  Navbar  */
+        .navbar { background-color: #1a1a1a; border-bottom: 3px solid #c0392b; }
+        .navbar-brand { color: #c0392b !important; font-weight: 900; letter-spacing: 1px; }
+        .nav-link { color: #f0f0f0 !important; font-weight: 600; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: #c0392b !important; }
+        #theme-toggle { background: none; border: 1px solid #c0392b; color: #c0392b; border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+        #theme-toggle:hover { background-color: #c0392b; color: #fff; }
+ 
+        /*  Hero  */
+        .hero { background: linear-gradient(135deg, #1a1a1a 60%, #c0392b 100%); padding: 60px 0 40px; }
+        .hero h1 { font-size: 2.8rem; font-weight: 900; }
+        .hero h1 span { color: #c0392b; }
+        .hero p { color: #ccc; max-width: 600px; }
+ 
+        /*  Search  */
+        .search-wrap { background-color: var(--surface2); padding: 24px 0; }
+        #car-search { background-color: var(--surface); color: var(--text); border: 1px solid #c0392b; border-radius: 8px; padding: 10px 16px; width: 100%; max-width: 420px; font-size: 1rem; outline: none; }
+        #car-search::placeholder { color: var(--muted); }
+ 
+        /*  Car cards  */
+        .car-card-inner { background-color: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px; height: 100%; transition: border-color 0.3s, transform 0.2s; }
+        .car-card-inner:hover { border-color: #c0392b; transform: translateY(-4px); }
+        .car-badge { display: inline-block; background-color: #c0392b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase; }
+        .car-name { font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; }
+        .car-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
+        .car-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+        .car-price { font-size: 1.1rem; font-weight: 700; color: #e74c3c; margin-top: 12px; }
+        #no-results { display: none; color: var(--muted); text-align: center; padding: 40px 0; font-size: 1.1rem; }
+ 
+        /*  Section title  */
+        .section-title { font-size: 1.6rem; font-weight: 800; border-left: 5px solid #c0392b; padding-left: 14px; margin-bottom: 24px; }
+ 
+        /*  Footer  */
+        footer { background-color: #1a1a1a; border-top: 3px solid #c0392b; padding: 30px 0; text-align: center; color: #888; margin-top: 60px; }
+        footer a { color: #c0392b; text-decoration: none; }
+    </style>
+</head>
+<body>
+ 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">JDM Cars KE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="SUBARU.html">Subaru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="TOYOTA.html">Toyota</a></li>
+                    <li class="nav-item"><a class="nav-link" href="NISSAN.html">Nissan</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="HONDA.html">Honda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MAZDA.html">Mazda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MITSUBISHI.html">Mitsubishi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="ms-3"> Light Mode</button>
+            </div>
+        </div>
     </nav>
+ 
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1><span>Honda</span> Cars</h1>
+            <p class="mt-2">Honda's VTEC engines and precise engineering make their JDM models some of the most thrilling and reliable cars ever built.</p>
+        </div>
+    </section>
+ 
+    <!-- Search -->
+    <div class="search-wrap">
+        <div class="container">
+            <input type="text" id="car-search" placeholder=" Search by model, year, or type…">
+        </div>
+    </div>
+ 
+    <!-- Cars Grid -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Available Models</h2>
+            <div class="row g-4" id="cars-grid">
+ 
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Honda NSX Type R" data-year="1992" data-type="Coupe">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Coupe</div>
+                        <h5 class="car-name">Honda NSX Type R</h5>
+                        <div class="car-meta">1992 &nbsp;·&nbsp; Coupe</div>
+                        <p class="car-desc">A mid-engine aluminium supercar engineered with Ayrton Senna's input. Naturally aspirated 3.0L V6.</p>
+                        <div class="car-price">KSh 8,500,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Honda Integra Type R DC2" data-year="1998" data-type="Coupe">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Coupe</div>
+                        <h5 class="car-name">Honda Integra Type R DC2</h5>
+                        <div class="car-meta">1998 &nbsp;·&nbsp; Coupe</div>
+                        <p class="car-desc">The benchmark front-wheel-drive sports car. High-revving B18C engine, limited-slip diff.</p>
+                        <div class="car-price">KSh 1,800,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Honda Accord Euro R CL7" data-year="2003" data-type="Sedan">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Sedan</div>
+                        <h5 class="car-name">Honda Accord Euro R CL7</h5>
+                        <div class="car-meta">2003 &nbsp;·&nbsp; Sedan</div>
+                        <p class="car-desc">A K20A-powered sports sedan with 220hp, close-ratio 6-speed gearbox.</p>
+                        <div class="car-price">KSh 1,050,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Honda Civic Type R EK9" data-year="1998" data-type="Hatchback">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Hatchback</div>
+                        <h5 class="car-name">Honda Civic Type R EK9</h5>
+                        <div class="car-meta">1998 &nbsp;·&nbsp; Hatchback</div>
+                        <p class="car-desc">Iconic three-door Type R with the screaming B16B engine and red Recaro seats.</p>
+                        <div class="car-price">KSh 1,600,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Honda CR-V RD1" data-year="1997" data-type="SUV">
+                    <div class="car-card-inner">
+                        <div class="car-badge">SUV</div>
+                        <h5 class="car-name">Honda CR-V RD1</h5>
+                        <div class="car-meta">1997 &nbsp;·&nbsp; SUV</div>
+                        <p class="car-desc">Honda's original compact SUV. Reliable B20B engine, real-time 4WD, incredibly practical.</p>
+                        <div class="car-price">KSh 680,000</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 car-card" data-name="Honda Fit RS" data-year="2012" data-type="Hatchback">
+                    <div class="car-card-inner">
+                        <div class="car-badge">Hatchback</div>
+                        <h5 class="car-name">Honda Fit RS</h5>
+                        <div class="car-meta">2012 &nbsp;·&nbsp; Hatchback</div>
+                        <p class="car-desc">A sporty variant of the popular Fit with 1.5L engine, paddle shifters, and sport suspension.</p>
+                        <div class="car-price">KSh 850,000</div>
+                    </div>
+                </div>
+            </div>
+            <div id="no-results">No models match your search. Try a different keyword.</div>
+        </div>
+    </section>
+ 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-1">© 2026 JDM Cars KE. All rights reserved.</p>
+            <p class="mb-0">Questions? <a href="mailto:info@jdmcars.ke">info@jdmcars.ke</a></p>
+        </div>
+    </footer>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JDM.js"></script>
+</body>
 </html>
