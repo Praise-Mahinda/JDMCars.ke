@@ -39,15 +39,15 @@ body {
 }
  
 /* ── Page Background Images ── */
-.page-home       { background-image: url('images/JDMCarLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-subaru     { background-image: url('images/SUBARULogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-toyota     { background-image: url('images/TOYOTALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-nissan     { background-image: url('images/NISSANLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-honda      { background-image: url('images/HONDALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-mazda      { background-image: url('images/MAZDALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-mitsubishi { background-image: url('images/MITSUBISHILogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-about      { background-image: url('images/JDMCarLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
-.page-contact    { background-image: url('images/JDMCarLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-home       { background-image: url('images/JDMCarLogo.jpg'); background-color: rgba(0, 0, 0, 0.85);background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-subaru     { background-image: url('images/SUBARULogo.jpg'); background-color: rgba(0, 0, 0, 0.85); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-toyota     { background-image: url('images/TOYOTALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-nissan     { background-image: url('images/NISSANLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-honda      { background-image: url('images/HONDALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-mazda      { background-image: url('images/MAZDALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-mitsubishi { background-image: url('images/MISTUBISHILogo.jpg'); background-color: rgba(0, 0, 0, 0.85);background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-about      { background-image: url('images/AboutUs.jpg'); background-color: rgba(0, 0, 0, 0.85);background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
+.page-contact    { background-image: url('images/ContactUs.jpg'); background-color: rgba(0, 0, 0, 0.85);background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-blend-mode: overlay; }
  
 /* ── Light mode ── */
 [data-theme="light"] {
