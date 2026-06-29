@@ -1,3 +1,10 @@
+/* =====================
+   JDM Cars KE - Main CSS
+   ===================== */
+ 
+/* Google Fonts */
+ 
+/* ── Colours ── */
 :root {
     --red: #c0392b;
     --red-hover: #e74c3c;
@@ -20,22 +27,37 @@
  
 /* ── Body ── */
 body {
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #111;
     color: #f0f0f0;
     line-height: 1.6;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
 }
  
+/* ── Page Background Images ── */
+.page-home       { background-image: url('images/JDMCarLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-subaru     { background-image: url('images/SUBARULogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-toyota     { background-image: url('images/TOYOTALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-nissan     { background-image: url('images/NISSANLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-honda      { background-image: url('images/HONDALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-mazda      { background-image: url('images/MAZDALogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-mitsubishi { background-image: url('images/MITSUBISHILogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-about      { background-image: url('images/JDMCarLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+.page-contact    { background-image: url('images/JDMCarLogo.jpg'); background-color: rgba(0, 0, 0, 0.85); }
+ 
 /* ── Light mode ── */
-[data-theme="light"] body,
-body[data-theme="light"] {
-    background-color: var(--light-bg);
+[data-theme="light"] {
+    background-color: rgba(245, 245, 245, 0.90) !important;
     color: var(--text-dark);
 }
  
 /* ── Headings ── */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Oswald', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
@@ -58,7 +80,7 @@ a:hover {
  
 .navbar-brand {
     color: var(--red) !important;
-    font-family: 'Oswald', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 2px;
@@ -100,12 +122,13 @@ a:hover {
  
 /* ── Section title style ── */
 .section-title {
-    font-family: 'Oswald', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.6rem;
     border-left: 5px solid var(--red);
     padding-left: 12px;
     margin-bottom: 8px;
 }
+ 
 /* ── Cards ── */
 .jdm-card,
 .car-card-inner,
@@ -163,7 +186,7 @@ a:hover {
 }
  
 .stat-item .num {
-    font-family: 'Oswald', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
